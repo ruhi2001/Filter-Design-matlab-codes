@@ -36,7 +36,7 @@ bs_ideal =  ideal_lp(pi,n) -ideal_lp((Ws2+Wc2)/2,n) + ideal_lp((Ws1+Wc1)/2,n);
 kaiser_win = (kaiser(n,beta))';
 
 FIR_BandStop = bs_ideal .* kaiser_win;
-%ssfvtool(FIR_BandStop);         %frequency response
+fvtool(FIR_BandStop);         %frequency response
 
 %magnitude response
 [H,f] = freqz(FIR_BandStop,1,1024, f_samp);
