@@ -1,7 +1,7 @@
 %Chebyshev LPF parameters
 D1 = 1/(0.85*0.85)-1;       %since delta is 0.15
 epsilon = sqrt(D1);         %epsilon was set to this value to satisfy required inequality
-N = 5;
+N = 4;
 
 % Open CLHP Poles of the Chebyshev Polynomial of order 4
 p1 = -sin(pi/(2*N))*sinh(asinh(1/epsilon)/N)+i*cos(pi/(2*N))*cosh(asinh(1/epsilon)/N);
@@ -13,7 +13,6 @@ p4 = -sin(3*pi/(2*N))*sinh(asinh(1/epsilon)/N)-i*cos(3*pi/(2*N))*cosh(asinh(1/ep
 %evaluating the Transfer function of Chebyshev Analog LPF
 n1 = [1 -p1-p2 p1*p2];
 n2 = [1 -p3-p4 p3*p4];
-n3 = [1 -p5]
 
 den = conv(n1,n2);          %multiply n1 and n2, which are the two quadratic factors in the denominator
 num = [den(5)*sqrt(1/(1+epsilon*epsilon))];        % even order, DC Gain set as 1/(1+ epsilon^2)^0.5
