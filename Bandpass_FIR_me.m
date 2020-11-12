@@ -27,7 +27,7 @@ N_min = 1 + ceil((A-8) / (2.285*(Wc1-Ws1)));           %empirical formula for N_
 n=N_min+17;
 disp(n);
 %Ideal bandpass impulse response of length "n"
-bp_ideal = ideal_lp((Wc1+Ws1)/2,n) - ideal_lp((Wc2+Ws2)/2,n);
+bp_ideal = -ideal_lp((Wc1+Ws1)/2,n) + ideal_lp((Wc2+Ws2)/2,n);
 
 %Kaiser Window of length "n" with shape paramter beta calculated above
 kaiser_win = (kaiser(n,beta))';
